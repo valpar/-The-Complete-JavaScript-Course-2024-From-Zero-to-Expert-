@@ -177,7 +177,7 @@ if (height) {
 } else {
   console.log("Height is UNDEFINED");
 }
-*/
+
 
 const age = "18";
 if (age === 18) console.log("You just became an adult :D (strict)");
@@ -198,3 +198,29 @@ if (favourite === 23) {
 }
 
 if (favourite !== 23) console.log("Why not 23?");
+*/
+
+// Logical operators
+
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+const canAffordCarInsurance = false;
+
+console.log(hasDriversLicense && hasGoodVision); //true
+console.log(hasDriversLicense || hasGoodVision); //true
+console.log(!hasDriversLicense); //false
+
+/* if (hasDriversLicense && hasGoodVision) {
+  console.log('Valmar is able to drive.');
+} else {
+  console.log('Someone else should drive');
+} */
+
+const isTired = false; // C
+console.log(hasDriversLicense || hasGoodVision || isTired); //true
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log('Valmar is able to drive.');
+} else {
+  console.log('Someone else should drive');
+}
