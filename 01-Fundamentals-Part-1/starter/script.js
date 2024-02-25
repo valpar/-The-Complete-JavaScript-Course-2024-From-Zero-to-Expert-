@@ -265,4 +265,34 @@ if (day === 'monday') {
 } else {
   console.log('Not a valid day');
 }
+
+
+// Statements and expressions
+// An expression is a piece of code that produces a value
+3 + 4;
+1991;
+true && false && !false;
+// A statement is a bigger piece of code that does not produce a value by itself, but can be used to construct an expression
+if (23 > 10) {
+  const str = '23 is bigger';
+}
+
+console.log(`I'm ${2024 - 1996} years old`);
+
+const age = 24;
+const isFullAge =
+  age >= 18
+    ? console.log('I like to drink wine')
+    : console.log('I like to drink water');
+console.log(isFullAge);
+
+let drink;
+if (age >= 18) {
+  drink = 'wine';
+} else {
+  drink = 'water';
+}
+console.log(drink);
+
+console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`);
 */
