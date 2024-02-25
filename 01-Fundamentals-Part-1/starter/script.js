@@ -198,7 +198,7 @@ if (favourite === 23) {
 }
 
 if (favourite !== 23) console.log("Why not 23?");
-*/
+
 
 // Logical operators
 
@@ -210,11 +210,11 @@ console.log(hasDriversLicense && hasGoodVision); //true
 console.log(hasDriversLicense || hasGoodVision); //true
 console.log(!hasDriversLicense); //false
 
-/* if (hasDriversLicense && hasGoodVision) {
+if (hasDriversLicense && hasGoodVision) {
   console.log('Valmar is able to drive.');
 } else {
   console.log('Someone else should drive');
-} */
+} 
 
 const isTired = false; // C
 console.log(hasDriversLicense || hasGoodVision || isTired); //true
@@ -224,3 +224,45 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 } else {
   console.log('Someone else should drive');
 }
+
+
+// The switch statement
+
+const day = 'wednesday';
+
+switch (day) {
+  case 'monday': //day === 'monday'
+    console.log('Starting work');
+    break;
+  case 'tuesday':
+    console.log('Project planning');
+    break;
+  case 'wednesday':
+  case 'thursday':
+    console.log('Development time');
+    break;
+  case 'friday':
+    console.log('Finishing tasks');
+    break;
+  case 'saturday':
+  case 'sunday':
+    console.log('Weekend');
+    break;
+  default:
+    console.log('Not a valid day');
+}
+
+if (day === 'monday') {
+  console.log('Starting work');
+} else if (day === 'tuesday') {
+  console.log('Project planning');
+} else if (day === 'wednesday' || day === 'thursday') {
+  console.log('Development time');
+} else if (day === 'friday') {
+  console.log('Finishing tasks');
+} else if (day === 'saturday' || day === 'sunday') {
+  console.log('Weekend');
+} else {
+  console.log('Not a valid day');
+}
+*/
