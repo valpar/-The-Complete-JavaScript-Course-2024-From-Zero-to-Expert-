@@ -77,7 +77,7 @@ function fruitProcessor(apples, oranges) {
 }
 
 console.log(fruitProcessor(2, 3));
-*/
+
 
 const calcAge = function (birthYear) {
   return 2037 - birthYear;
@@ -98,3 +98,79 @@ const yearsUntilRetirement = function (firstName, birthYear) {
 
 console.log(yearsUntilRetirement('Valmar', 1996));
 console.log(yearsUntilRetirement('Mike', 1950));
+
+
+// Introduction to Arrays
+
+const friend1 = 'Sander';
+const friend2 = 'Steven';
+const friend3 = 'Jaanus';
+
+const friends = ['Sander', 'Steven', 'Jaanus'];
+console.log(friends);
+
+console.log(friends[0]);
+console.log(friends[2]);
+
+console.log(friends.length);
+
+console.log(friends[friends.length - 2]);
+
+friends[3] = 'Jay';
+console.log(friends);
+
+const firstName = 'Valmar';
+const Valmar = [firstName, 'Mets', 2024 - 1996, 'student', friends];
+
+console.log(Valmar);
+console.log(Valmar.length);
+
+// Exercise
+
+function calcAge(birthYear) {
+  return 2024 - birthYear;
+}
+
+const years = [1992, 1957, 2012, 2021, 2008];
+
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+const age3 = calcAge(years[years.length - 1]);
+console.log(age1, age2, age3);
+
+const ages = [
+  calcAge(years[0]),
+  calcAge(years[1]),
+  calcAge(years[years.length - 1]),
+];
+
+console.log(ages);
+*/
+
+const friends = ['Sander', 'Steven', 'Jaanus'];
+//add elements
+const newLength = friends.push('Mark'); //adds element to the end of the array
+console.log(friends);
+console.log(newLength);
+
+friends.unshift('Wilhelm'); //adds element to the beginning of the array
+console.log(friends);
+
+//remove elements
+friends.pop(); //removes last element of the array
+console.log(friends);
+
+friends.shift(); //removes first element of the array
+console.log(friends);
+
+console.log(friends.indexOf('Steven')); //returns the index of the element
+console.log(friends.indexOf('Bob')); //returns -1 if the element is not in the array
+
+console.log(friends.includes('Steven')); //returns true or false if the element is in the array
+console.log(friends.includes('Bob')); //returns true or false if the element is in the array
+
+if (friends.includes('Steven')) {
+  console.log('You have a friend called Steven');
+} else {
+  console.log("You don't have a friend called Steven");
+}
