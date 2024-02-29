@@ -145,7 +145,7 @@ const ages = [
 ];
 
 console.log(ages);
-*/
+
 
 const friends = ['Sander', 'Steven', 'Jaanus'];
 //add elements
@@ -174,3 +174,80 @@ if (friends.includes('Steven')) {
 } else {
   console.log("You don't have a friend called Steven");
 }
+
+
+const valmar = {
+  firstName: 'Valmar',
+  lastName: 'Parts',
+  age: 27,
+  job: 'Service desk engineer',
+  friends: ['Sander', 'Laura', 'Ants'],
+};
+
+console.log(valmar);
+console.log(valmar.age);
+console.log(valmar['job']);
+
+const nameKey = 'Name';
+console.log(valmar['first' + nameKey]);
+console.log(valmar['last' + nameKey]);
+
+const interestedIn = prompt(
+  'What do you want to know about Valmar? Choose between firstName, lastName, age, job, and friends'
+);
+console.log(valmar[interestedIn]);
+
+if (valmar[interestedIn]) {
+  console.log(valmar[interestedIn]);
+} else {
+  console.log(
+    'Wrong request! Choose between firstName, lastName, age, job, and friends'
+  );
+}
+
+valmar.location = 'Estonia';
+valmar['instagram'] = '@vaaalmar';
+console.log(valmar);
+
+// Challenge
+// "Valmar has 3 friends, and his best friend is called Sander"
+
+console.log(
+  `${valmar.firstName} has ${valmar.friends.length} friends, and his best friend is called ${valmar.friends[0]}.`
+);
+
+
+const valmar = {
+  firstName: 'Valmar',
+  lastName: 'Parts',
+  birthYear: 1996,
+  job: 'Service desk engineer',
+  friends: ['Sander', 'Laura', 'Ants'],
+  hasDriversLicense: true,
+
+  calcAge: function (birthYear) {
+    console.log(this);
+    return 2024 - this.birthYear;
+  },
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year old ${
+      this.job
+    }, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license`;
+  },
+};
+
+console.log(valmar.calcAge());
+//console.log(valmar['calcAge'](1996));
+
+// Challenge
+
+//valmar is a 27-year old service desk engineer, and he has a driver's license
+
+console.log(valmar.getSummary());
+
+console.log(
+  `${valmar.firstName} is a ${valmar.calcAge()}-year old ${
+    valmar.job
+  }, and he has ${valmar.hasDriversLicense ? 'a' : 'no'} driver's license`
+);
+*/
