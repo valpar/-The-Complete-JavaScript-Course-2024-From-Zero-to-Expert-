@@ -175,7 +175,7 @@ if (friends.includes('Steven')) {
   console.log("You don't have a friend called Steven");
 }
 
-
+//intro to objects
 const valmar = {
   firstName: 'Valmar',
   lastName: 'Parts',
@@ -250,4 +250,62 @@ console.log(
     valmar.job
   }, and he has ${valmar.hasDriversLicense ? 'a' : 'no'} driver's license`
 );
+
+
+//For loop
+
+// console.log('Lifting weights repetition 1 🏋️‍♂️');
+// console.log('Lifting weights repetition 2 🏋️‍♂️');
+// console.log('Lifting weights repetition 3 🏋️‍♂️');
+// console.log('Lifting weights repetition 4 🏋️‍♂️');
+// console.log('Lifting weights repetition 5 🏋️‍♂️');
+// console.log('Lifting weights repetition 6 🏋️‍♂️');
+
+// for loop keeps running while condition is TRUE
+for (let rep = 1; rep <= 30; rep++) {
+  console.log(`Lifting weights repetition ${rep} 🏋️‍♂️`);
+}
+
+
+const valmarArray = [
+  'Valmar',
+  'Parts',
+  2024 - 1996,
+  'Service desk engineer',
+  ['Sander', 'Laura', 'Ants'],
+  true,
+];
+
+const types = [];
+
+for (let i = 0; i < valmarArray.length; i++) {
+  console.log(valmarArray[i]);
+  //Filling types array
+  //types[i] = typeof valmarArray[i];
+  types.push(typeof valmarArray[i]);
+}
+
+console.log(types);
+
+const years = [1996, 2006, 1972, 1968];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2024 - years[i]);
+}
+
+console.log(ages);
+
+//continue and break
+console.log('---ONLY STRINGS---');
+for (let i = 0; i < valmarArray.length; i++) {
+  if (typeof valmarArray[i] !== 'string') continue;
+  console.log(valmarArray[i], typeof valmarArray[i]);
+}
+
+console.log('---BREAK WITH NUMBER---');
+for (let i = 0; i < valmarArray.length; i++) {
+  if (typeof valmarArray[i] === 'number') break;
+  console.log(valmarArray[i], typeof valmarArray[i]);
+}
 */
