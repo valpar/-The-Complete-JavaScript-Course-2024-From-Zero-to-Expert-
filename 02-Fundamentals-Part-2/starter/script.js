@@ -308,4 +308,47 @@ for (let i = 0; i < valmarArray.length; i++) {
   if (typeof valmarArray[i] === 'number') break;
   console.log(valmarArray[i], typeof valmarArray[i]);
 }
+
+
+const valmarArray = [
+  'Valmar',
+  'Parts',
+  2024 - 1996,
+  'Service desk engineer',
+  ['Sander', 'Laura', 'Ants'],
+  true,
+];
+
+for (let i = valmarArray.length - 1; i >= 0; i--) {
+  console.log(i, valmarArray[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`Starting exercise ${exercise}`);
+
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
+  }
+}
 */
+
+// While loop
+
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`Exercise lifting weight repetition ${rep}`);
+}
+
+let rep = 1;
+while (rep <= 10) {
+  console.log(`Exercise lifting weight repetition ${rep}`);
+  rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6);
+console.log(dice);
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) console.log('Loop is about to end...');
+}
