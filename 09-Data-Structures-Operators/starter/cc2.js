@@ -239,7 +239,7 @@ const { language, programmingLanguage = 'unknown' } = books[6];
 let bookTitle = 'unknown';
 let bookAuthor = 'unknown';
 
-const ({ title: bookTitle, author: bookAuthor }) = books[0];
+({ title: bookTitle, author: bookAuthor }) = books[0];
 
 
 // 2.5 Each book object has a deeply nested rating property as illustrated below: 
