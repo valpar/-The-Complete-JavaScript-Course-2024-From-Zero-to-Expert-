@@ -54,6 +54,15 @@ const restaurant = {
   },
 };
 
+//restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests || 10;
+console.log(guests1);
+
+// nullish: null and undefined (NOT 0 or '')
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
+
+/*
 console.log('----- OR -----');
 // logic operators can use any dayta type, return any data type, and do short circuiting
 console.log(3 || 'Jonas');
@@ -92,7 +101,7 @@ restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 //Rest patterns and parameters
 //1) Destructuring
 //Spread, because on right side of =
-/*
+
 const arr = [1, 2, ...[3, 4]];
 
 //Rest, because on left side of =
