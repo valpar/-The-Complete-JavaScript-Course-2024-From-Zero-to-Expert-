@@ -54,9 +54,45 @@ const restaurant = {
   },
 };
 
+console.log('----- OR -----');
+// logic operators can use any dayta type, return any data type, and do short circuiting
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+//tenary operator
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 17;
+console.log(guests2);
+
+console.log('----- AND -----');
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+
+console.log('Hello' && 23 && null && 'Jonas');
+
+//practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+} else if (restaurant.orderPasta) {
+  restaurant.orderPasta('spinach', 'mushrooms', 'olives');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+//or operator returns the first truthy value of all the operands or the last value if all are falsy
+//and operator returns the first falsy value of all the operands or the last value if all are truthy
+
 //Rest patterns and parameters
 //1) Destructuring
 //Spread, because on right side of =
+/*
 const arr = [1, 2, ...[3, 4]];
 
 //Rest, because on left side of =
@@ -89,7 +125,7 @@ add(...x);
 
 restaurant.orderPizza('chicken', 'mushrooms', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
-/*
+
 Spread operator
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
