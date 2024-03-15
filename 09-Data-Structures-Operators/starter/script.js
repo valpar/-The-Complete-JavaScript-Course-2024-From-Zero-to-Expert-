@@ -53,7 +53,7 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-
+/*
 const rest1 = {
   name: 'Capri',
   //numGuests: 50,
@@ -82,7 +82,7 @@ rest2.owner &&= 'Anonymous';
 console.log(rest1);
 console.log(rest2);
 
-/*
+
 //restaurant.numGuests = 0;
 const guests1 = restaurant.numGuests || 10;
 console.log(guests1);
