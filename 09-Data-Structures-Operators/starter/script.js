@@ -54,6 +54,35 @@ const restaurant = {
   },
 };
 
+const rest1 = {
+  name: 'Capri',
+  //numGuests: 50,
+  numGuests: 0,
+};
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni',
+};
+
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// rest1.numGuests ||= 10; // falsy with 0
+// rest2.numGuests ||= 10; // same as above line of code
+
+//nullish assignment opretator: null or undefined (NOT 0 or '')
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+//rest1.owner = rest1.owner && 'Anonymous';
+//rest2.owner = rest2.owner && 'Anonymous';
+rest1.owner &&= 'Anonymous';
+rest2.owner &&= 'Anonymous';
+
+console.log(rest1);
+console.log(rest2);
+
+/*
 //restaurant.numGuests = 0;
 const guests1 = restaurant.numGuests || 10;
 console.log(guests1);
@@ -62,7 +91,7 @@ console.log(guests1);
 const guestsCorrect = restaurant.numGuests ?? 10;
 console.log(guestsCorrect);
 
-/*
+
 console.log('----- OR -----');
 // logic operators can use any dayta type, return any data type, and do short circuiting
 console.log(3 || 'Jonas');
