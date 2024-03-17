@@ -52,6 +52,38 @@ const restaurant = {
   },
 };
 
+// The Set object lets you store unique values of any type, whether primitive values or object references.
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+//ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+//example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(new Set(staff).size);
+
+/*
 const properties = Object.keys(openingHours);
 console.log(properties);
 
@@ -74,7 +106,7 @@ for (const [key, { open, close }] of entries) {
   console.log(`On ${x[0]}, we open at ${x[1].open} and close at ${x[1].close}`);
 }
 
-/*
+
 if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
 
 //with optional chaining
