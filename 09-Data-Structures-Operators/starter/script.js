@@ -52,6 +52,38 @@ const restaurant = {
   },
 };
 
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Italian, Pizzeria'));
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('categories'));
+rest.delete(2);
+console.log(rest);
+console.log(rest.size);
+//rest.clear();
+console.log(rest.size);
+const arr = [1, 2];
+rest.set(document.querySelector('h1'), 'Heading');
+rest.set(arr, 'Test');
+console.log(rest);
+console.log(rest.get(arr));
+
+/*
 // The Set object lets you store unique values of any type, whether primitive values or object references.
 const ordersSet = new Set([
   'Pasta',
@@ -83,7 +115,7 @@ const staffUnique = [...new Set(staff)];
 console.log(staffUnique);
 console.log(new Set(staff).size);
 
-/*
+
 const properties = Object.keys(openingHours);
 console.log(properties);
 
