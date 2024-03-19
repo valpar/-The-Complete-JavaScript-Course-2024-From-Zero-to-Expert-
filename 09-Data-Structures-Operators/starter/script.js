@@ -21,6 +21,50 @@ const openingHours = {
 };
 
 // Data needed for first part of the section
+// Sources of data
+// 1 From the program itself
+// 2 From the UI
+// 3 From external sources, e.g. web API - application programming interface
+// Collection of data -> Data structure
+// Simple list of data -> Array of Sets
+// Key-value pairs -> Object or Maps
+// Json key value pairs -> Object or Maps
+
+// Arrays vs Sets and Objects vs Maps
+
+// Arrays
+// ordered collections of values
+// can have duplicate values
+// can have different types
+// use when you need ordered list of values
+// use when you need to manipulate data
+// use when you need to loop over data
+
+// Sets
+// collections of unique values
+// high performance for checks
+// use when you need to work with unique values
+// use when high performance is needed
+// use when you need high performance uniqueness check
+
+// Objects
+// store key-value pairs
+// keys are not ordered
+// use when you need to create a simple list of key-value pairs
+// use when you need to manipulate data
+// use when you need to loop over data
+
+// Maps
+// store key-value pairs
+// keys can be any type
+// keys are ordered
+// use when you need to store key-value pairs
+// use when you need to manipulate data
+// use when you need to loop over data
+// use when you need to have keys that are not strings
+
+/*
+// Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -85,7 +129,7 @@ console.log([...question]);
 //console.log([...question.entries()]);
 console.log([...question.keys()]);
 console.log([...question.values()]);
-/*
+
 const rest = new Map();
 rest.set('name', 'Classico Italiano');
 rest.set(1, 'Firenze, Italy');
