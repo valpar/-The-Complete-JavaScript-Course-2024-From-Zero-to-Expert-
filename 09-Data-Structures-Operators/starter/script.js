@@ -39,6 +39,7 @@ const capitalizeName = function (name) {
   console.log(namesUpper.join(' '));
 };
 
+/*
 const passenger = 'jessica ann smith davis';
 
 // padding
@@ -68,7 +69,7 @@ planesInline(5);
 planesInline(3);
 planesInline(20);
 
-/*
+
 const airline = 'TAP Air Portugal';
 
 console.log(airline.toLowerCase());
