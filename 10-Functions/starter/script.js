@@ -75,3 +75,91 @@ Higher Order Functions
 - A function that receives another function as an argument, that returns a new function, or both
 - This is only possible because of first-class functions
 */
+
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// Higher-order function
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
+
+const high5 = function () {
+  console.log('👋');
+};
+
+document.body.addEventListener('click', high5);
+
+['Valmar', 'Marcelo', 'Lucas'].forEach(high5);
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey'); // greet function is called and returns a new function
+greeterHey('Valmar');
+greeterHey('Marcelo');
+
+greet('Hello')('Valmar');
+
+// Challenge
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+const Lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function () {}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}` // this keyword points to the object that is calling the method
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+Lufthansa.book(239, 'Valmar');
+Lufthansa.book(635, 'Lucas');
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const flightBooking = Lufthansa.book; // does not work because the this keyword is undefined
+
+//Does not work
+//flightBooking(24, 'Sebastian');
+
+//Call method
+flightBooking.call(eurowings, 24, 'Sebastian'); //call method allows us to set the this keyword explicitly
+
+flightBooking.call(Lufthansa, 239, 'Valmar');
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+flightBooking.call(swiss, 583, 'Mary');
+
+// Apply method
+const flightData = [583, 'George'];
+flightBooking.apply(swiss, flightData); // does not work anymore because we have lost the context of "this" keyword
+
+flightBooking.call(swiss, ...flightData);
