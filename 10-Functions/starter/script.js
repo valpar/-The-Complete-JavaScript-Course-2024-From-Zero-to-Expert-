@@ -75,7 +75,7 @@ Higher Order Functions
 - A function that receives another function as an argument, that returns a new function, or both
 - This is only possible because of first-class functions
 */
-
+/*
 const oneWord = function (str) {
   return str.replace(/ /g, '').toLowerCase();
 };
@@ -210,7 +210,7 @@ const addTaxRate = function (rate) {
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(23));
-
+*/
 // Coding Challenge #1
 
 /* 
@@ -242,7 +242,7 @@ BONUS TEST DATA 1: [5, 2, 3]
 BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 
 GOOD LUCK 
-*/
+
 
 const poll = {
   question: 'What is your favorite programming language?',
@@ -278,3 +278,65 @@ poll.displayResults = function (type = 'array') {
 
 poll.displayResults.call({ answers: [5, 2, 3] });
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+*/
+/*
+const poll = {
+  question: 'What is your favorite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    //get answer
+    const answer = Number(
+      prompt(
+        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+      )
+    );
+    console.log(answer);
+
+    //register answer
+    if (typeof answer === 'number' && answer >= 0 && answer <= 3) {
+      this.answers[answer]++;
+    }
+    this.displayResults();
+    this.displayResults('string');
+  },
+  displayResults(type = 'array') {
+    if (type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string') {
+      console.log(`Poll results are ${this.answers.join(', ')}`);
+    }
+  },
+};
+// poll.registerNewAnswer();
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+poll.displayResults.call({ answers: [5, 2, 3] });
+
+// BONUS TEST DATA 1: [5, 2, 3]
+// BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
+*/
+
+//IIFE
+
+// const runOnce = function () {
+//   console.log('This will never run again');
+// };
+// runOnce();
+
+(function () {
+  console.log('This will never run again');
+  const isPrivate = 23;
+})();
+
+//console.log(isPrivate);
+
+(() => console.log('This will ALSO never run again'))();
+
+{
+  const isPrivate = 23;
+  var notPrivate = 46;
+}
+console.log(notPrivate); // Reference
