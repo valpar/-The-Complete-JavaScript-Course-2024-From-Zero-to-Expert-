@@ -317,7 +317,7 @@ poll.displayResults.call({ answers: [5, 2, 3] });
 
 // BONUS TEST DATA 1: [5, 2, 3]
 // BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
-*/
+
 
 //IIFE
 
@@ -340,3 +340,28 @@ poll.displayResults.call({ answers: [5, 2, 3] });
   var notPrivate = 46;
 }
 console.log(notPrivate); // Reference
+
+*/
+
+// Closures
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
+
+// Global Scope - NOT part of the closure
+// Closure - passengerCount variable is part of the closure
+// Closure VE attached to the function object that it's created from
