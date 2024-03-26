@@ -79,21 +79,8 @@
       <div class="operation operation--transfer">
         <h2>Transfer money</h2>
         <form class="form form--transfer">
-          <label class="form__label">To</label>
-          <label class="form__label" for="transfer-to">Transfer to</label>
-          <input
-            type="text"
-            id="transfer-to"
-            class="form__input form__input--to"
-            placeholder="Enter recipient"
-          />
-          <label class="form__label" for="amount-input">Amount</label>
-          <input
-            type="number"
-            id="amount-input"
-            class="form__input form__input--amount"
-            placeholder="Enter amount"
-          />
+          <input type="text" class="form__input form__input--to" />
+          <input type="number" class="form__input form__input--amount" />
           <button class="form__btn form__btn--transfer">&rarr;</button>
           <label class="form__label">Transfer to</label>
           <label class="form__label">Amount</label>
@@ -104,13 +91,7 @@
       <div class="operation operation--loan">
         <h2>Request loan</h2>
         <form class="form form--loan">
-          <label class="form__label" for="loan-amount">Loan Amount</label>
-          <input
-            type="number"
-            id="loan-amount"
-            class="form__input form__input--loan-amount"
-            placeholder="Enter loan amount"
-          />
+          <input type="number" class="form__input form__input--loan-amount" />
           <button class="form__btn form__btn--loan">&rarr;</button>
           <label class="form__label form__label--loan">Amount</label>
         </form>
@@ -120,17 +101,12 @@
       <div class="operation operation--close">
         <h2>Close account</h2>
         <form class="form form--close">
-          <label class="form__label">Username</label>
-          <label class="form__label" for="username">Username</label>
+          <input type="text" class="form__input form__input--user" />
           <input
-            type="text"
-            id="username"
-            class="form__input form__input--user"
-            placeholder="Enter username"
+            type="password"
+            maxlength="6"
+            class="form__input form__input--pin"
           />
-          <label class="form__label">Input Field</label>
-          <input type="text" class="form__input" placeholder="Enter value" />
-          type="password" maxlength="6" class="form__input form__input--pin" />
           <button class="form__btn form__btn--close">&rarr;</button>
           <label class="form__label">Confirm user</label>
           <label class="form__label">Confirm PIN</label>
