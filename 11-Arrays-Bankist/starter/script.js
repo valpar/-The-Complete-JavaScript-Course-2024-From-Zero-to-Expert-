@@ -229,3 +229,19 @@ const createUsername = function (accs) {
 
 createUsername(accounts);
 console.log(accounts);
+
+//the filter method
+
+const deposits = movements.filter(
+  function (mov) {
+    return mov > 0;
+  } //returns a new array with all the positive values in the original array
+);
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawals = movements.filter(mov => mov < 0); //returns a new array with all the negative values in the original array
+console.log(withdrawals);
