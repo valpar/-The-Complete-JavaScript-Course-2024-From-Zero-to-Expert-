@@ -199,12 +199,8 @@ const eurToUsd = 1.2; //exchange rate from euros to usd
 
 const movementsUSEd = movements.map(movement => movement * eurToUsd);
 
-console.log(movements);
-console.log(movementsUSEd);
-
 const movementsUSDfor = [];
 for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
-console.log(movementsUSDfor);
 
 const movementDescriptions = movements.map(
   (mov, i) =>
@@ -213,9 +209,23 @@ const movementDescriptions = movements.map(
     )}`
 );
 
-console.log(movementDescriptions);
 // if (mov > 0) {
 //   console.log(`Movement ${i + 1}: You deposited ${mov}`);
 // } else {
 //   console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
 // }
+
+//Computing usernames
+
+const createUsername = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsername(accounts);
+console.log(accounts);
