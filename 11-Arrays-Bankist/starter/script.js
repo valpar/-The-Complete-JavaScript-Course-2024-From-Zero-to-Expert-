@@ -180,6 +180,11 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
 //console.log(containerMovements.innerHTML);
 
 //Data transformation with Map, filter and reduce
@@ -228,7 +233,6 @@ const createUsername = function (accs) {
 };
 
 createUsername(accounts);
-console.log(accounts);
 
 //the filter method
 
@@ -237,11 +241,27 @@ const deposits = movements.filter(
     return mov > 0;
   } //returns a new array with all the positive values in the original array
 );
-console.log(deposits);
 
 const depositsFor = [];
 for (const mov of movements) if (mov > 0) depositsFor.push(mov);
-console.log(depositsFor);
-
 const withdrawals = movements.filter(mov => mov < 0); //returns a new array with all the negative values in the original array
-console.log(withdrawals);
+
+//the reduce method
+console.log(movements);
+//accumulator -> SNOWBALL - it accumulates the value that we ultimately want to return
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
+
+const balance = movements.reduce((acc, cur) => acc + cur, 0); //returns the sum of all the elements in the array
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov; // returns the sum of all the elements in the array
+console.log(balance2);
+
+// maxium value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
