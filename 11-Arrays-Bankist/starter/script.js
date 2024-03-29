@@ -196,23 +196,23 @@ const calcPrintBalance = function (movements) {
 //the map method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurToUsd = 1.2; //exchange rate from euros to usd
+//const eurToUsd = 1.2; //exchange rate from euros to usd
 
 // const movementsUSEd = movements.map(function (mov) {
 //   return mov * eurToUsd;
 // });
 
-const movementsUSEd = movements.map(movement => movement * eurToUsd);
+// const movementsUSEd = movements.map(movement => movement * eurToUsd);
 
-const movementsUSDfor = [];
-for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+// const movementsUSDfor = [];
+// for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
 
-const movementDescriptions = movements.map(
-  (mov, i) =>
-    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
-      mov
-    )}`
-);
+// const movementDescriptions = movements.map(
+//   (mov, i) =>
+//     `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+//       mov
+//     )}`
+// );
 
 // if (mov > 0) {
 //   console.log(`Movement ${i + 1}: You deposited ${mov}`);
@@ -221,6 +221,35 @@ const movementDescriptions = movements.map(
 // }
 
 //Computing usernames
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes} €`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)} €`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest} €`;
+};
+calcDisplaySummary(account1.movements);
 
 const createUsername = function (accs) {
   accs.forEach(function (acc) {
@@ -247,7 +276,6 @@ for (const mov of movements) if (mov > 0) depositsFor.push(mov);
 const withdrawals = movements.filter(mov => mov < 0); //returns a new array with all the negative values in the original array
 
 //the reduce method
-console.log(movements);
 //accumulator -> SNOWBALL - it accumulates the value that we ultimately want to return
 // const balance = movements.reduce(function (acc, cur, i, arr) {
 //   console.log(`Iteration ${i}: ${acc}`);
@@ -265,3 +293,13 @@ const max = movements.reduce((acc, mov) => {
   if (acc > mov) return acc;
   else return mov;
 }, movements[0]);
+
+const eurToUsd = 1.2;
+console.log(movements);
+
+// Pipeline
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
