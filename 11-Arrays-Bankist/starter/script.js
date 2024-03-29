@@ -243,7 +243,6 @@ const calcDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
@@ -286,20 +285,28 @@ const balance = movements.reduce((acc, cur) => acc + cur, 0); //returns the sum 
 
 let balance2 = 0;
 for (const mov of movements) balance2 += mov; // returns the sum of all the elements in the array
-console.log(balance2);
 
-// maxium value
-const max = movements.reduce((acc, mov) => {
-  if (acc > mov) return acc;
-  else return mov;
-}, movements[0]);
+// // maxium value
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov) return acc;
+//   else return mov;
+// }, movements[0]);
 
-const eurToUsd = 1.2;
+// const eurToUsd = 1.2;
+// console.log(movements);
+
+// // Pipeline
+// const totalDepositsUSD = movements
+//   .filter(mov => mov > 0)
+//   .map(mov => mov * eurToUsd)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(totalDepositsUSD);
+
+const firstWithdrawal = movements.find(mov => mov < 0); // returns the first element that satisfies the condition
 console.log(movements);
+console.log(firstWithdrawal);
 
-// Pipeline
-const totalDepositsUSD = movements
-  .filter(mov => mov > 0)
-  .map(mov => mov * eurToUsd)
-  .reduce((acc, mov) => acc + mov, 0);
-console.log(totalDepositsUSD);
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Sarah Smith');
+console.log(account);
