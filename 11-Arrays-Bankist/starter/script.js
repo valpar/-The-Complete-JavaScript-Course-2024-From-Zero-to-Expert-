@@ -319,7 +319,24 @@ btnTransfer.addEventListener('click', function (e) {
     updateUI(currentAccount);
   }
 });
-//the filter method
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (
+    inputCloseUsername === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accpints.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    //Delete account
+    account.splice(index, 1);
+    //Hide UI
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
+});
 
 const deposits = movements.filter(
   function (mov) {
