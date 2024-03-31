@@ -399,22 +399,48 @@ for (const mov of movements) balance2 += mov; // returns the sum of all the elem
 // const account = accounts.find(acc => acc.owner === 'Sarah Smith');
 // console.log(account);
 
-console.log(movements);
-//Equality
-console.log(movements.includes(-130));
-//Some: Condition is true for at least one element in the array (returns true or false)
-console.log(movements.some(mov => mov === -130));
+// console.log(movements);
+// //Equality
+// console.log(movements.includes(-130));
+// //Some: Condition is true for at least one element in the array (returns true or false)
+// console.log(movements.some(mov => mov === -130));
 
-const anyDeposits = movements.some(mov => mov > 0); //returns true if at least one element satisfies the condition
-console.log(anyDeposits);
+// const anyDeposits = movements.some(mov => mov > 0); //returns true if at least one element satisfies the condition
+// console.log(anyDeposits);
 
-//EVERY
+// //EVERY
 
-console.log(movements.every(mov => mov > 0));
+// console.log(movements.every(mov => mov > 0));
 
-// Seperate callback
+// // Seperate callback
 
-const depost = mov => mov > 0;
-console.log(movements.some(depost));
-console.log(movements.every(depost));
-console.log(movements.filter(depost));
+// const depost = mov => mov > 0;
+// console.log(movements.some(depost));
+// console.log(movements.every(depost));
+// console.log(movements.filter(depost));\
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat()); //flattens the array into a single dimension
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// const accountMovements = accounts.map(acc => acc.movements);
+// console.log(accountMovements);
+// const allMovements = accountMovements.flat();
+// console.log(allMovements);
+// const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+// console.log(overallBalance);
+
+// flat
+const overallBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
+
+//flatmap
+const overallBalance2 = accounts
+  .flatmap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
