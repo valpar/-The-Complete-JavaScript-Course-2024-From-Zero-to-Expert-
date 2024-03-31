@@ -320,6 +320,20 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    //Add movement
+    currentAccount.movements.push(amount);
+    //Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   if (
@@ -376,11 +390,31 @@ for (const mov of movements) balance2 += mov; // returns the sum of all the elem
 //   .reduce((acc, mov) => acc + mov, 0);
 // console.log(totalDepositsUSD);
 
-const firstWithdrawal = movements.find(mov => mov < 0); // returns the first element that satisfies the condition
+// const firstWithdrawal = movements.find(mov => mov < 0); // returns the first element that satisfies the condition
+// console.log(movements);
+// console.log(firstWithdrawal);
+
+// console.log(accounts);
+
+// const account = accounts.find(acc => acc.owner === 'Sarah Smith');
+// console.log(account);
+
 console.log(movements);
-console.log(firstWithdrawal);
+//Equality
+console.log(movements.includes(-130));
+//Some: Condition is true for at least one element in the array (returns true or false)
+console.log(movements.some(mov => mov === -130));
 
-console.log(accounts);
+const anyDeposits = movements.some(mov => mov > 0); //returns true if at least one element satisfies the condition
+console.log(anyDeposits);
 
-const account = accounts.find(acc => acc.owner === 'Sarah Smith');
-console.log(account);
+//EVERY
+
+console.log(movements.every(mov => mov > 0));
+
+// Seperate callback
+
+const depost = mov => mov > 0;
+console.log(movements.some(depost));
+console.log(movements.every(depost));
+console.log(movements.filter(depost));
