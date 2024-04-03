@@ -422,3 +422,21 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI);
 });
+
+//Array methods practice
+
+//1. Calculate the total deposits in the bank
+
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .flat()
+  .filter(mov => mov > 0)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(bankDepositSum);
+
+//2. Count how many deposits there are in the bank with at least 1000
+
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov >= 1000).length;
