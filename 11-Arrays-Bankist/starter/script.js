@@ -261,15 +261,15 @@ btnSort.addEventListener('click', function (e) {
   sorted = !sorted;
 });
 
-const deposits = movements.filter(
-  function (mov) {
-    return mov > 0;
-  } //returns a new array with all the positive values in the original array
-);
+// const deposits = movements.filter(
+//   function (mov) {
+//     return mov > 0;
+//   } //returns a new array with all the positive values in the original array
+// );
 
-const depositsFor = [];
-for (const mov of movements) if (mov > 0) depositsFor.push(mov);
-const withdrawals = movements.filter(mov => mov < 0); //returns a new array with all the negative values in the original array
+// const depositsFor = [];
+// for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+// const withdrawals = movements.filter(mov => mov < 0); //returns a new array with all the negative values in the original array
 
 //the reduce method
 //accumulator -> SNOWBALL - it accumulates the value that we ultimately want to return
@@ -278,10 +278,10 @@ const withdrawals = movements.filter(mov => mov < 0); //returns a new array with
 //   return acc + cur;
 // }, 0);
 
-const balance = movements.reduce((acc, cur) => acc + cur, 0); //returns the sum of all the elements in the array
+// const balance = movements.reduce((acc, cur) => acc + cur, 0); //returns the sum of all the elements in the array
 
-let balance2 = 0;
-for (const mov of movements) balance2 += mov; // returns the sum of all the elements in the array
+// let balance2 = 0;
+// for (const mov of movements) balance2 += mov; // returns the sum of all the elements in the array
 
 // // maxium value
 // const max = movements.reduce((acc, mov) => {
@@ -328,11 +328,11 @@ for (const mov of movements) balance2 += mov; // returns the sum of all the elem
 // console.log(movements.every(depost));
 // console.log(movements.filter(depost));\
 
-const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
-//console.log(arr.flat()); //flattens the array into a single dimension
+// const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+// //console.log(arr.flat()); //flattens the array into a single dimension
 
-const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
-//console.log(arrDeep.flat(2));
+// const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+// //console.log(arrDeep.flat(2));
 
 // const accountMovements = accounts.map(acc => acc.movements);
 // console.log(accountMovements);
@@ -356,11 +356,11 @@ const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
 
 // Sorting arrays
 
-const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+//const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
 
 //console.log(owners.sort()); // sort method mutates the original array
 
-const numbers = [3, 4, 2, 1, 6, 5];
+//const numbers = [3, 4, 2, 1, 6, 5];
 
 //console.log(numbers.sort()); // sort method mutates the original array
 // sort method mutates the original array
@@ -372,7 +372,7 @@ const numbers = [3, 4, 2, 1, 6, 5];
 //   if (a > b) return 1;
 //   if (a < b) return -1;
 // });
-movements.sort((a, b) => a - b);
+//movements.sort((a, b) => a - b);
 //console.log(movements);
 
 //Descending
@@ -380,23 +380,23 @@ movements.sort((a, b) => a - b);
 //   if (a > b) return -1;
 //   if (a < b) return 1;
 // });
-movements.sort((a, b) => b - a);
+//movements.sort((a, b) => b - a);
 
 //console.log(movements);
 
-console.log([1, 2, 3, 4, 5, 6, 7]);
-console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+// console.log([1, 2, 3, 4, 5, 6, 7]);
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
-//Empty arrays + fill method
-const x = new Array(7);
-console.log(x);
-//console.log(x.map(() => 5));
+// //Empty arrays + fill method
+// const x = new Array(7);
+// console.log(x);
+// //console.log(x.map(() => 5));
 
-x.fill(1, 3, 5);
-console.log(x);
+// x.fill(1, 3, 5);
+// console.log(x);
 
-arr.fill(23, 2, 6);
-console.log(arr);
+// arr.fill(23, 2, 6);
+// console.log(arr);
 
 //Array.from
 Array.from({ length: 7 }, () => 1);
@@ -431,7 +431,7 @@ const bankDepositSum = accounts
   .flatMap(acc => acc.movements)
   .flat()
   .filter(mov => mov > 0)
-  .reduce((acc, mov) => acc + mov, 0);
+  .reduce((sum, cur) => sum + cur, 0);
 
 console.log(bankDepositSum);
 
@@ -439,4 +439,43 @@ console.log(bankDepositSum);
 
 const numDeposits1000 = accounts
   .flatMap(acc => acc.movements)
-  .filter(mov => mov >= 1000).length;
+  .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0); //
+
+console.log(numDeposits1000);
+
+//prefixed ++ operator
+let a = 10;
+console.log(++a); //10
+
+//3. Create an object which contains the sum of deposits and withdrawals
+const { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      //   cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+console.log(deposits, withdrawals);
+
+// 4. Convert any string to a title case
+// this is a nice title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+
+  return capitalize(titleCase);
+};
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
