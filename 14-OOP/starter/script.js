@@ -170,6 +170,10 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+  // Static method
+  static hey() {
+    console.log('Hey there');
+  }
 }
 
 const jessica = new PersonCl('Jessica Forest', 2020);
@@ -177,3 +181,5 @@ console.log(jessica);
 console.log(jessica.age);
 
 const walter = new PersonCl('Walter White', 1965);
+
+PersonCl.hey();
