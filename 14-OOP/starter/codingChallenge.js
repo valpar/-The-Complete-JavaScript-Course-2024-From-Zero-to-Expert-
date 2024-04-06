@@ -40,3 +40,4 @@ bmw.accelerate(); // BMW is going at 130
 bmw.accelerate(); // BMW is going at 140
 bmw.brake(); // BMW is going at 135
 bmw.brake(); // BMW is going at 130
+bmw.accelerate(); // BMW is going at 130
