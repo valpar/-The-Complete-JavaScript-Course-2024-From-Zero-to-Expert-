@@ -121,7 +121,7 @@ jessica.greet();
 //1. Classes are NOT hoisted
 //2. Classes are first-class citizens
 //3. Classes are executed in strict mode
-*/
+
 
 //Getters and Setters
 
@@ -205,3 +205,37 @@ console.log(steven.__proto__ === PersonProto);
 const sarah = Object.create(PersonProto);
 sarah.init('Sarah', 1979);
 sarah.calcAge();
+*/
+// inheritance between classes: constructor functions
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2024 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear); // this doesn't work because it's not a constructor function
+  this.course = course;
+};
+
+Student.prototype = Object.create(Person.prototype); // this is the correct way to inherit from Person
+
+// Student.prototype.constructor = Student;
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student('Mike', 1996, 'Computer Science');
+console.log(mike);
+mike.introduce();
+mike.calcAge();
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
