@@ -205,7 +205,7 @@ console.log(steven.__proto__ === PersonProto);
 const sarah = Object.create(PersonProto);
 sarah.init('Sarah', 1979);
 sarah.calcAge();
-*/
+
 // inheritance between classes: constructor functions
 
 const Person = function (firstName, birthYear) {
@@ -297,3 +297,34 @@ const martha = new StudentCl('Martha Jones', 2001, 'Computer Science');
 console.log(martha);
 martha.introduce();
 martha.calcAge();
+*/
+
+// inheritance between classes: Object.create
+
+const PersonProto = {
+  calcAge() {
+    console.log(2021 - this.birthYear);
+  },
+
+  init(name, birthYear) {
+    this.name = name;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (name, birthYear, course) {
+  PersonProto.init.call(this, name, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.name} and I study ${this.course}`);
+};
+
+const jay = Object.create(StudentProto);
+jay.init('Jay', 1996, 'Computer Science');
+jay.introduce();
+jay.calcAge();
