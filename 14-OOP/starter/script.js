@@ -408,3 +408,14 @@ console.log(acc1.pin);
 
 acc1.deposit(300).deposit(500).withdraw(35).requestLoan(2500).withdraw(4000);
 console.log(acc1.getMovements());
+
+//ES6 classes summary
+
+// 1. Classes are syntactic sugar for constructor functions.
+// 2. Classes are NOT hoisted.
+// 3. Classes are first-class citizens.
+// 4. Classes are executed in strict mode.
+// 5. Classes do NOT have private data.
+// 6. Public methods are added to .prototype property.
+// 7. Static methods are defined on the class.
+// 8. Classes can inherit from other classes.
