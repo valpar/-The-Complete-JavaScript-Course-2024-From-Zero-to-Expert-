@@ -330,40 +330,57 @@ jay.introduce();
 jay.calcAge();
 */
 // another class example
+
+// Encapsulation: Private class fields and methods
+// 1. Public fields
+// 2. Private fields
+// 3. Public methods
+// 4. Private methods
+
 class Account {
+  // 1. Public fields (instances) - public instance fields. Referenced by the this keyword.
+  locale = navigator.language;
+
+  // 2. Private fields - private instance fields
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this._pin = pin;
-    // protected property
-    this._movements = [];
-    this.locale = navigator.language;
+    // protected propert
+    this.#pin = pin;
+    // this.#movements = [];
+    //this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
+  // 3. Public methods
 
   // Public interface
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
 
   withdraw(val) {
     this.deposit(-val);
   }
 
-  _approveLoan(val) {
-    return true;
-  }
-
   requestLoan(val) {
-    if (this._approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log('Loan approved');
     }
+  }
+
+  // 4. Private methods
+  #approveLoan(val) {
+    //no support for private methods yet
+    return true;
   }
 }
 
@@ -377,7 +394,6 @@ console.log(acc1);
 acc1.deposit(300);
 acc1.withdraw(400);
 acc1.requestLoan(1000);
-acc1.approveLoan(1000);
 console.log(acc1.getMovements());
 
 console.log(acc1);
