@@ -45,3 +45,7 @@ class Car {
 }
 
 const ford = new Car('Ford', 120);
+ford.accelerate(); // Ford is going at 130
+ford.accelerate(); // Ford is going at 140
+ford.brake(); // Ford is going at 135
+ford.brake(); // Ford is going at 130
