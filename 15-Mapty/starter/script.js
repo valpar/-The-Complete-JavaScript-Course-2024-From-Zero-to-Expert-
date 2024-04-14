@@ -82,7 +82,7 @@ form.addEventListener('submit', function (e) {
     inputElevation.value =
       '';
 
-  // display marker
+  // display markergit
   const { lat, lng } = mapEvent.latlng;
   L.marker([lat, lng])
     .addTo(map)
@@ -103,3 +103,10 @@ inputType.addEventListener('change', function () {
   inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
   inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
 });
+
+//Project architecture
+// Parent class - Workout
+// Child classes - Running and Cycling
+// Running and Cycling classes will have their own properties and methods that are unique to each type of workout.
+// Class App will be responsible for managing all workouts.
+// It should have methods to add a new workout, render all workouts, move to a marker on the map, etc.
